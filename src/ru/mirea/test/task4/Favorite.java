@@ -1,57 +1,35 @@
 package ru.mirea.test.task4;
 
-import java.util.Scanner;
-
 public class Favorite {
-    public enum Season{
-        Лето, Осень, Зима, Весна
+    public static void main(String[] args){
+        Season season1 = Season.SUMMER;
+        System.out.println(season1);
+        print(Season.SPRING);
+        printAllValues();
+        Season season2 = Season.valueOf("WINTER");
+        System.out.println(season2);
     }
 
-    public static void main(String[] args) {
-        Season fav;
-        Scanner input = new Scanner(System.in);
-        String choice;
-        boolean flag = true;
-        while(flag){
-            System.out.println("Введите ваше любимое время года с заглавной буквы:");
-            choice = input.next();
-            switch (choice) {
-            case "Лето":
-                fav = Season.Лето;
-                flag = false;
+    public static void print(Season season){
+        switch (season) {
+            case WINTER:
+                System.out.println("Мне нравится зима");
                 break;
-            case "Осень":
-                fav = Season.Осень;
-                flag = false;
+            case SPRING:
+                System.out.println("Мне нравится весна");
                 break;
-            case "Зима":
-                fav = Season.Зима;
-                flag = false;
+            case SUMMER:
+                System.out.println("Мне нравится лето");
                 break;
-            case "Весна":
-                fav = Season.Весна;
-                flag = false;
+            case AUTUMN:
+                System.out.println("Мне нравится осен");
                 break;
-            default:
-                System.out.println("Нет такого времени года");
-            }
         }
     }
 
-    public void ILove(Season love){
-        switch(love) {
-            case Лето:
-                System.out.println("Я люблю лето");
-                break;
-            case Осень:
-                System.out.println("Я люблю осень");
-                break;
-            case Зима:
-                System.out.println("Я люблю зиму");
-                break;
-            case Весна:
-                System.out.println("Я люблю весну");
-                break;
+    public static void printAllValues(){
+        for (Season s: Season.values()){
+            System.out.println(s + " " + s.getAvgTemp()+ " " + s.getDescription());
         }
     }
 }
